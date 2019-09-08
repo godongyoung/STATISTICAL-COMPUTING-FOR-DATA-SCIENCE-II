@@ -4,6 +4,7 @@ mean(x)
 mean(x^2)
 mean(x^3)
 mean(x^4)
+
 #sampling from exp(beta)------
 u = runif(1e5)
 beta=1
@@ -11,6 +12,8 @@ x = -beta*log(u)
 options(warn=-1)
 hist(x,nclss=1000) #when you use histogram, please use more than 100 bins!
 ### OW the professor will take off your point!!!
+
+
 
 
 
@@ -22,6 +25,7 @@ for(i in 1:10000){
   x[i]=-beta*log(cumprod(u))
 }
 hist(x,nclss=1000)
+
 
 #rejection sample for generating normal------
 #enough sample 을 만족할때까지 뽑아야 하므로 while loop을 이용한다.
@@ -43,6 +47,7 @@ while(index<=n){
 }
 hist(x,nclass=100)
 
+
 # HW2.posterior만들기----
 n = 1e5
 lambda = rep(NA,n)
@@ -53,7 +58,7 @@ index=1
 denorm=cumprod(dpois(x=data,lambda = mean(data)))
 while(index<=n){
   #step1
-  lambda_candi = exp(rnorm(mean = log(4),sd = (0.5)))
+  lambda_candi = exp(rnorm(1,mean = log(4),sd = (0.5)))
   
   #step2
   # r = (cumprod(dpois(x=data,lambda = lambda_candi))
